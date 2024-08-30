@@ -1,6 +1,7 @@
 # "Anota ai" backend challenge
 
 **Study Project**
+
 - Reference: https://github.com/githubanotaai/new-test-backend-nodejs
 
 **User Stories:**
@@ -31,4 +32,5 @@
 ![img.png](img.png)
 
 **Instructions**
+
 - Update the README file with instructions on how to run the application.

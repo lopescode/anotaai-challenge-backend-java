@@ -6,6 +6,10 @@ import org.springframework.data.mongodb.MongoDatabaseFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 
+/**
+ *
+ * @author Usuario
+ */
 @Configuration
 public class MongoDBConfig {
     @Bean

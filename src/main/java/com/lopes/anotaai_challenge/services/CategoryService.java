@@ -1,13 +1,19 @@
 package com.lopes.anotaai_challenge.services;
 
-import com.lopes.anotaai_challenge.domain.category.exception.CategoryNotFoundException;
-import com.lopes.anotaai_challenge.domain.category.Category;
-import com.lopes.anotaai_challenge.domain.category.CategoryDTO;
-import com.lopes.anotaai_challenge.repositories.CategoryRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.lopes.anotaai_challenge.domain.category.Category;
+import com.lopes.anotaai_challenge.domain.category.CategoryDTO;
+import com.lopes.anotaai_challenge.domain.category.exception.CategoryNotFoundException;
+import com.lopes.anotaai_challenge.repositories.CategoryRepository;
 
+/**
+ *
+ * @author Usuario
+ */
 @Service
 public class CategoryService {
     private final CategoryRepository categoryRepository;
@@ -24,6 +30,10 @@ public class CategoryService {
 
     public List<Category> findAll() {
         return categoryRepository.findAll();
+    }
+
+    public Optional<Category> findById(String id) {
+        return categoryRepository.findById(id);
     }
 
     public Category update(String id, CategoryDTO categoryDTO) {

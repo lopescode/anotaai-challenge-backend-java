@@ -12,7 +12,7 @@
 	<artifactId>anotaai-challenge</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>anotaai-challenge</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Anota ai Challenge using Java with Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>
