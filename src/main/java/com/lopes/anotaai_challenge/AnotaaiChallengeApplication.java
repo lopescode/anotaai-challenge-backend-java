@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 /**
  *
- * @author Usuario
+ * @author Lopes
  */
 @SpringBootApplication
 @EnableMongoRepositories

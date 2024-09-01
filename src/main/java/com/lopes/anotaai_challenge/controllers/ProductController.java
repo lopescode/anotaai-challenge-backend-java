@@ -18,7 +18,7 @@ import com.lopes.anotaai_challenge.services.ProductService;
 
 /**
  *
- * @author Usuario
+ * @author Lopes
  */
 @RestController
 @RequestMapping("/api/product")

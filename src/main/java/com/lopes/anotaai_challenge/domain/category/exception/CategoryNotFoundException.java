@@ -2,7 +2,7 @@ package com.lopes.anotaai_challenge.domain.category.exception;
 
 /**
  *
- * @author Usuario
+ * @author Lopes
  */
 public class CategoryNotFoundException extends RuntimeException {
 }

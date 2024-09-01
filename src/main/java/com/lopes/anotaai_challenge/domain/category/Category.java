@@ -9,7 +9,7 @@ import lombok.Setter;
 
 /**
  *
- * @author Usuario
+ * @author Lopes
  */
 @Document(collection = "categories")
 @Getter

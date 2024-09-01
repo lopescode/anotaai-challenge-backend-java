@@ -7,7 +7,7 @@ import com.lopes.anotaai_challenge.domain.category.Category;
 
 /**
  *
- * @author Usuario
+ * @author Lopes
  */
 @Repository
 public interface CategoryRepository extends MongoRepository<Category, String> {

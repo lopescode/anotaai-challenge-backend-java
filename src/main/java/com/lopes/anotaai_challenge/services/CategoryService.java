@@ -12,7 +12,7 @@ import com.lopes.anotaai_challenge.repositories.CategoryRepository;
 
 /**
  *
- * @author Usuario
+ * @author Lopes
  */
 @Service
 public class CategoryService {

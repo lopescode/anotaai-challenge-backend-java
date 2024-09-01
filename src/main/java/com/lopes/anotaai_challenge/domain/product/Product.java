@@ -11,7 +11,7 @@ import lombok.Setter;
 
 /**
  *
- * @author Usuario
+ * @author Lopes
  */
 @Document(collection = "products")
 @Getter

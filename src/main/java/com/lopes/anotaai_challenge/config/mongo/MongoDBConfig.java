@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 
 /**
  *
- * @author Usuario
+ * @author Lopes
  */
 @Configuration
 public class MongoDBConfig {
