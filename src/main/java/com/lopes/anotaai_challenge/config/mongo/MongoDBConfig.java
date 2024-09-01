@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 public class MongoDBConfig {
     @Bean
     public MongoDatabaseFactory mongoConfigure() {
-        return new SimpleMongoClientDatabaseFactory("mongodb://localhost:27017/anotaai-challenge-java");
+        return new SimpleMongoClientDatabaseFactory("mongodb://127.0.0.1:27017/anotaai-challenge-java");
     }
 
     @Bean
