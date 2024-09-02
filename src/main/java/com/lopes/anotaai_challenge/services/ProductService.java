@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.lopes.anotaai_challenge.domain.category.Category;
 import com.lopes.anotaai_challenge.domain.category.exception.CategoryNotFoundException;
 import com.lopes.anotaai_challenge.domain.product.Product;
 import com.lopes.anotaai_challenge.domain.product.ProductDTO;
@@ -31,15 +30,13 @@ public class ProductService {
   }
 
   public Product insert(ProductDTO productDTO) {
-    Category category = this.categoryService.findById(productDTO.categoryId()).orElseThrow(CategoryNotFoundException::new);
+    this.categoryService.findById(productDTO.categoryId()).orElseThrow(CategoryNotFoundException::new);
 
     Product product = new Product(productDTO);
 
-    product.setCategory(category);
-
     productRepository.save(product);
     
-    this.snsService.publish(new MessageDTO(productDTO.ownerId()));
+    this.snsService.publish(new MessageDTO(productDTO.toString()));
 
     return product;
   }
@@ -52,7 +49,9 @@ public class ProductService {
     Product product = productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
 
     if (productDTO.categoryId() != null) {
-      this.categoryService.findById(productDTO.categoryId()).ifPresent(product::setCategory);
+      this.categoryService.findById(productDTO.categoryId()).orElseThrow(CategoryNotFoundException::new);
+
+      product.setCategoryId(productDTO.categoryId());
     }
 
     if (!productDTO.title().isEmpty()) product.setTitle(productDTO.title());
@@ -61,7 +60,7 @@ public class ProductService {
 
     productRepository.save(product);
 
-    this.snsService.publish(new MessageDTO(productDTO.ownerId()));
+    this.snsService.publish(new MessageDTO(productDTO.toString()));
 
     return product;
   }

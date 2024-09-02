@@ -9,6 +9,8 @@ import com.lopes.anotaai_challenge.domain.category.Category;
 import com.lopes.anotaai_challenge.domain.category.CategoryDTO;
 import com.lopes.anotaai_challenge.domain.category.exception.CategoryNotFoundException;
 import com.lopes.anotaai_challenge.repositories.CategoryRepository;
+import com.lopes.anotaai_challenge.services.aws.AwsSnsService;
+import com.lopes.anotaai_challenge.services.aws.MessageDTO;
 
 /**
  *
@@ -17,15 +19,21 @@ import com.lopes.anotaai_challenge.repositories.CategoryRepository;
 @Service
 public class CategoryService {
     private final CategoryRepository categoryRepository;
+    private final AwsSnsService snsService;
 
-    public CategoryService(CategoryRepository categoryRepository) {
+    public CategoryService(CategoryRepository categoryRepository, AwsSnsService snsService) {
         this.categoryRepository = categoryRepository;
+        this.snsService = snsService;
     }
 
     public Category insert(CategoryDTO categoryDTO) {
         Category category = new Category(categoryDTO);
 
-        return categoryRepository.save(category);
+        categoryRepository.save(category);
+
+        this.snsService.publish(new MessageDTO(categoryDTO.toString()));
+
+        return category;
     }
 
     public List<Category> findAll() {
@@ -42,7 +50,11 @@ public class CategoryService {
         if(!categoryDTO.title().isEmpty()) category.setTitle(categoryDTO.title());
         if(!categoryDTO.description().isEmpty()) category.setDescription(categoryDTO.description());
 
-        return categoryRepository.save(category);
+        categoryRepository.save(category);
+
+        this.snsService.publish(new MessageDTO(categoryDTO.toString()));
+
+        return category;
     }
 
     public void delete(String id) {
